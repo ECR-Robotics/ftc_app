@@ -50,8 +50,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Team A - Crater Autonomous!", group="Robot")
-public class TeamA_RightBlue_Autonomous extends LinearOpMode {
+@Autonomous(name="Team A - TENSORFLOW TEST", group="Robot")
+public class TeamA_TensorTest extends LinearOpMode {
 
     RobotTeamA robot = new RobotTeamA();
     double rightTurnTime = 0.5;
@@ -94,113 +94,9 @@ public class TeamA_RightBlue_Autonomous extends LinearOpMode {
         while (runtime.seconds() < 2.3) {
             robot.move_straight(0.5);
         }
-        runtime.reset();
-        while (runtime.seconds() < 0.7) {
-            robot.turnLeft(0.6);
-        }
 
-        runtime.reset();
-        while (runtime.seconds() < 3.5) {
-            robot.move_straight(0.5);
-        }
 
-        robot.stop();
 
-        runtime.reset();
-        while (runtime.seconds() < 0.5) {
-            robot.symbolServo.setPosition(1);
-        }
-
-        runtime.reset();
-        while (runtime.seconds() < 3.0) {
-            robot.lift.setPower(-1);
-        }
-        robot.lift.setPower(0);
-
-        robot.stop();
-
-        runtime.reset();
-        while (runtime.seconds() < 2.5) {
-            robot.move_straight(-1);
-        }
-
-        runtime.reset();
-        while (runtime.seconds() < 0.4) {
-            robot.turnRight(0.1);
-        }
-
-        runtime.reset();
-        while(runtime.seconds()< 2.5) {
-            robot.move_straight(-1);
-        }
-        /* (runtime.seconds() < 0.3) {
-            robot.turnLeft(0.4);
-        }
-        runtime.reset();
-        while (runtime.seconds() < 0.8) {
-            robot.move_straight(1);
-        }
-        runtime.reset();
-        while (runtime.seconds() < 0.3) {
-            robot.turnLeft(0.3);
-        } */
-      /*  while (runtime.seconds() < 0.4) {
-            robot.move_straight(0.5);
-        }
-
-        runtime.reset();
-        while (runtime.seconds() < 0.5) {
-            robot.turnLeft(0.6);
-        }
-
-        runtime.reset();
-        while (runtime.seconds() < 0.5) {
-            robot.move_straight(1);
-        }
-
-        runtime.reset();
-        while (runtime.seconds() < 0.5) {
-            robot.turnLeft(0.6);
-        }
-
-        runtime.reset();
-        while (runtime.seconds() < 2.3) {
-            robot.move_straight(0.5);
-        }
-
-        runtime.reset(); */
-
-        /* while(runtime.seconds() < 5) {
-        robot.turnRight(1);
-    } */
-
-        /*
-        runtime.reset();
-        while (runtime.seconds() < 1) {
-            robot.move_straight(1);
-            }
-
-        runtime.reset();
-        while(runtime.seconds() < 0.5) {
-            robot.turnRight(1);
-            }
-
-       runtime.reset();
-        while (runtime.seconds() < 0.5) {
-            robot.move_straight(1);
-            }
-
-        runtime.reset();
-        while (runtime.seconds() < 1) {
-            robot.turnLeft(1);
-            }
-
-        runtime.reset();
-        while (runtime.seconds() < 1.5) {
-            robot.move_straight(1);
-            }
-
-         */
     }
 }
 

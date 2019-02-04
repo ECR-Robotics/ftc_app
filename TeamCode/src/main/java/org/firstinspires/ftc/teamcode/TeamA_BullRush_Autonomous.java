@@ -47,7 +47,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Team A - Bull Rush!", group="Robot (On Bot)")
+@Autonomous(name="Team A - Bull Rush!", group="Robot")
 public class TeamA_BullRush_Autonomous extends LinearOpMode {
 
     RobotTeamA robot = new RobotTeamA();
