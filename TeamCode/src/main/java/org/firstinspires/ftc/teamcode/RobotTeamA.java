@@ -108,10 +108,10 @@ public class RobotTeamA
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
-        leftfrontDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rightfrontDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        leftbackDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rightbackDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        leftfrontDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightfrontDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftbackDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightbackDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         // Define and initialize ALL installed servos.
@@ -176,6 +176,41 @@ public class RobotTeamA
         while (runtime.seconds() < 0.85) {
             turnRight(-0.5);
         }
+
+    }
+
+    void forwardWithEncoders (double distance, double speed) {
+        leftfrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftbackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightfrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightbackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        double diameter = 2 * 2.15;
+        double circ = 3.14159 * diameter;
+        double clicks = 1120;
+        int rotations = (int) Math.round(distance/circ * clicks);
+
+        leftfrontDrive.setTargetPosition(rotations);
+        rightfrontDrive.setTargetPosition(rotations);
+        leftbackDrive.setTargetPosition(rotations);
+        rightbackDrive.setTargetPosition(rotations);
+
+        leftfrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightfrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftbackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightbackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        leftfrontDrive.setPower(speed);
+        rightfrontDrive.setPower(speed);
+        leftbackDrive.setPower(speed);
+        rightbackDrive.setPower(speed);
+
+        while (leftfrontDrive.isBusy()) {
+
+        }
+        leftfrontDrive.setPower(0);
+        rightfrontDrive.setPower(0);
+        leftbackDrive.setPower(0);
+        rightbackDrive.setPower(0);
 
     }
     void dropSymbol () {
